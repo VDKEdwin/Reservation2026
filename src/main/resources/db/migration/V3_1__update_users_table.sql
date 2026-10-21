@@ -1,0 +1,2 @@
+-- Les index uniques login et email ont déjà été créés
+-- manuellement dans la base pid_db.

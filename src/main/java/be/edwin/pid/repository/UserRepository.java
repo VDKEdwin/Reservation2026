@@ -1,6 +1,7 @@
 package be.edwin.pid.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -11,4 +12,5 @@ public interface UserRepository extends CrudRepository<User, Long> {
     List<User> findByLastname(String lastname);
 
     User findById(long id);
+    Optional<User> findByEmail(String email);
 }
