@@ -17,6 +17,11 @@ public class StrongPasswordValidator implements ConstraintValidator<StrongPasswo
             return false;
         }
 
+        // Si vide, considéré comme valide (changement ignoré)
+        if (password == null || password.isBlank()) {
+            return true;
+        }
+
         return password.matches(PASSWORD_PATTERN);
     }
 }
