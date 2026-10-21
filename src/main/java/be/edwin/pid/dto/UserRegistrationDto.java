@@ -1,12 +1,14 @@
 package be.edwin.pid.dto;
 
 
+import be.edwin.pid.validation.PasswordMatches;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
+@PasswordMatches // annotation personnalisée
 public class UserRegistrationDto {
 
     @NotBlank(message = "Le prénom est obligatoire")

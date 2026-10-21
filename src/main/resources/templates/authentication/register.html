@@ -43,6 +43,8 @@
                 <input type="password" th:field="*{confirmPassword}" required>
             </div>
 
+            <div class="error" th:errors="*{__all__}"></div>
+
             <div>
                 <label>Langue</label>
                 <select th:field="*{langue}">
