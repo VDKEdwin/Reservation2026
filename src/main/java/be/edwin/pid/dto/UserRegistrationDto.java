@@ -2,9 +2,11 @@ package be.edwin.pid.dto;
 
 
 import be.edwin.pid.validation.PasswordMatches;
+import be.edwin.pid.validation.StrongPassword;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import be.edwin.pid.validation.StrongPasswordValidator;
 import lombok.Data;
 
 @Data
@@ -22,7 +24,7 @@ public class UserRegistrationDto {
     private String login;
 
     @NotBlank(message = "Le mot de passe est obligatoire")
-    @Size(min = 6, message = "Le mot de passe doit contenir au moins 6 caractères")
+    @StrongPassword
     private String password;
 
     @NotBlank(message = "Veuillez confirmer votre mot de passe")
