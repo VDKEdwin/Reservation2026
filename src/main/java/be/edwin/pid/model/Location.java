@@ -3,6 +3,9 @@ package be.edwin.pid.model;
 
 import jakarta.persistence.*;
 import com.github.slugify.Slugify;
+import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "locations")
@@ -17,6 +20,9 @@ public class Location {
 
     private String designation;
     private String address;
+
+    @OneToMany(mappedBy = "location")
+    private List<Show> shows = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "locality_id", nullable = false)
@@ -103,6 +109,33 @@ public class Location {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+
+    public List<Show> getShows() {
+        return shows;
+    }
+
+    public Location addShow(Show show) {
+        if (!this.shows.contains(show)) {
+            this.shows.add(show);
+            if (show.getLocation() != this) {
+                show.setLocation(this);
+            }
+        }
+        return this;
+    }
+
+    public Location removeShow(Show show) {
+        if (this.shows.remove(show)) {
+            if (show.getLocation() == this) {
+                show.setLocation(null);
+            }
+        }
+        return this;
+    }
+
+
+
 
     @Override
     public String toString() {
