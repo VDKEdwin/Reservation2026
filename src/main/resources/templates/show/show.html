@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+    <title>Fiche d'un spectacle</title>
+</head>
+<body>
+<div class="container">
+    <div layout:fragment="content">
+
+        <h1 th:text="${show.title}">Ayiti</h1>
+
+        <p th:if="${show.posterUrl}">
+            <img th:src="@{'/images/' + ${show.posterUrl}}"
+                 th:alt="${show.title}"
+                 width="200">
+        </p>
+
+        <p th:unless="${show.posterUrl}">
+            Aucune affiche disponible.
+        </p>
+
+        <p th:if="${show.location}">
+            <strong>Lieu de création :</strong>
+            <span th:text="${show.location.designation}">
+                Art Center
+            </span>
+        </p>
+
+        <p>
+            <strong>Prix :</strong>
+            <span th:text="|${show.price} €|">9.99 €</span>
+        </p>
+
+        <p th:if="${show.bookable}">
+            <em>Réservable</em>
+        </p>
+
+        <p th:unless="${show.bookable}">
+            <em>Non réservable</em>
+        </p>
+
+        <nav>
+            <a th:href="@{/shows}">Retour à l'index</a>
+        </nav>
+
+    </div>
+</div>
+</body>
+</html>
