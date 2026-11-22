@@ -1,4 +1,5 @@
 package be.edwin.pid.model;
+import lombok.*;
 
 
 import jakarta.persistence.Entity;
@@ -8,12 +9,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 @Setter
 
+@Data
+@NoArgsConstructor(force = true, access = AccessLevel.PROTECTED)
 
 @Entity
 @Table(name="artists")
